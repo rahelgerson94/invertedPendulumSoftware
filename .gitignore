@@ -1,12 +1,7 @@
-.DS_Store
-*/.DS_Store
+**/.DS_Store
 libsensor
 libekf
-*.d
-*/*.d
-*/*/*.d
-*/*/*/*.d
-*.a
-*/*.a
-*/*/*.a
-*/*/*/*.a
+libsteppermotor/test/data/
+**/*.a
+**/*.o
+**/*.d
