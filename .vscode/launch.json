@@ -1,6 +1,18 @@
 {
     "version": "0.2.0",
     "configurations": [
+      {
+        "name": "stepperMotorNominal",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "/Users/rahelmizrahi/Documents/Projects/InvertedPendulum/invertedPendulumSoftware/libsteppermotor/bin/stepperMotorTest1",
+        "args": [],
+        "stopAtEntry": true,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "lldb"
+      },
       
       {
         "name": "testStepperMotor",

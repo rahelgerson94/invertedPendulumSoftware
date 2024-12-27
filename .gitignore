@@ -5,3 +5,4 @@ libsteppermotor/test/data/
 **/*.a
 **/*.o
 **/*.d
+**/bin

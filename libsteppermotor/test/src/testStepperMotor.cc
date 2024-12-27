@@ -29,7 +29,7 @@ int main(void)
     float delay  = 1.0f;
     int numIntervals = 200;
     float curTime = 0.0f+dt;
-    float prevDelay = 1.0f; //s
+    float prevDelay = delay; //s
     float aRef = 5; //rad/s^2
     for (int k = 0; k < numIntervals; k++)
     {
@@ -43,14 +43,14 @@ int main(void)
         prevDelay = delay;
         timeHist.push_back(curTime);
         cout << delay << endl;
-        save2csv(timeHist, 1, "data", "test1");
+        save2csv(timeHist, 1, "data", "delay1");
     }
 
     return 0;
 }
 /*
 compute w[k] = w[k-1] + | (aRef*tspan - w[k-1])  | * (t[k] - t[k-1])
-                        |_ (tspan - t[k-1])     _|
+                        | (tspan - t[k-1])     _|
     
     w[k]: cur angular vel
     w[k-1]: prev angular vel

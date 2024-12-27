@@ -15,20 +15,18 @@ LIB_DIRS =  -L../../libsteppermotor/obj
 LIBS = -lsteppermotor #NOTE HOW THIS IS NOT LIBsteppermotor, its Lgain*
 LD_FLAGS = $(LIB_DIRS) $(LIBS)
 
-TARGET = $(BIN_DIR)/testStepperMotor 
-
 # Source and object files
-SRC = $(SRC_DIR)/testStepperMotor.cc
-OBJ = $(OBJ_DIR)/testStepperMotor.o
-DEPS = $(OBJ:.o=.d)
+# Find all source files and corresponding object and binary files
+SRC = $(wildcard $(SRC_DIR)/*.cc)
+OBJ = $(patsubst $(SRC_DIR)/%.cc,$(OBJ_DIR)/%.o,$(SRC))
+BIN = $(patsubst $(SRC_DIR)/%.cc,$(BIN_DIR)/%,$(SRC))
 
 CXX_FLAGS+=$(INCLUDE_DIRS)
 # Default rule
-all: $(TARGET)
-
-# Rule to create the executable
-$(TARGET): $(OBJ) | $(BIN_DIR)
-	$(CXX) $(CXX_FLAGS) $(OBJ) -o $(TARGET) $(LD_FLAGS)
+all: $(BIN)
+# Rule to create each binary
+$(BIN_DIR)/%: $(OBJ_DIR)/%.o  | $(BIN_DIR)
+	$(CXX) $(CXX_FLAGS) $< -o $@ $(LD_FLAGS)
 
 # Rule to compile source files into object files with dependency generation
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc | $(OBJ_DIR)
@@ -44,4 +42,6 @@ $(BIN_DIR):
 # Clean up
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
-	rm -rf $(BIN_DIR)/testStepperMotor
+	rm -rf $(BIN)  
+
+-include $(OBJ:.o=.d)

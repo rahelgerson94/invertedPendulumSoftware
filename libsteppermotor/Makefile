@@ -25,7 +25,7 @@ $(LIBRARY): $(OBJ) | $(OBJ_DIR)
 
 # Rule to compile source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -MMD -c $< -o $@
 
 # Create directories if they don't exist
 $(OBJ_DIR):
@@ -34,3 +34,4 @@ $(OBJ_DIR):
 # Clean up
 clean:
 	rm -rf $(OBJ_DIR)
+	
