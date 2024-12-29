@@ -8,12 +8,13 @@ CXXFLAGS = -std=c++17 -Wall -Wextra  -g -Wc++11-extensions
 SRC_DIR = src
 OBJ_DIR = obj
 LIB_DIR = ../lib
-LIBRARY = $(LIB_DIR)/libsteppermotor.a
+LIBRARY = $(LIB_DIR)/libsignalgenerator.a
+
 INCLUDE_DIRS =  -Iinclude/
 
 # Source files
-SRC = $(SRC_DIR)/StepperMotor.cc
-OBJ = $(OBJ_DIR)/StepperMotor.o
+SRC = $(SRC_DIR)/SignalGenerator.cc
+OBJ = $(OBJ_DIR)/SignalGenerator.o
 
 CXXFLAGS+= $(INCLUDE_DIRS)
 # Default LIBRARY
@@ -31,11 +32,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cc | $(OBJ_DIR)
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Create directories if they don't exist
-$(LIB_DIR):
-	mkdir -p $(LIB_DIR)
 # Clean up
 clean:
 	rm -rf $(OBJ_DIR)
-	rm -rf $(LIB)
+	rm $(LIB)
 	
