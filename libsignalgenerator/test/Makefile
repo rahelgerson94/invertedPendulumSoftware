@@ -11,6 +11,7 @@ LIB_DIR = ../../lib
 INCLUDE_DIRS = -Iinclude
 INCLUDE_DIRS += -I../../libsignalgenerator/include
 INCLUDE_DIRS += -I../../libsignalgenerator/src
+INCLUDE_DIRS += -I../../libdebug/include
 
 LIBS = -lsignalgenerator #NOTE HOW THIS IS NOT LIBsignalgenerator, its Lgain*
 LD_FLAGS = -L$(LIB_DIR) $(LIBS)

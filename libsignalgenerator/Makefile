@@ -11,6 +11,7 @@ LIB_DIR = ../lib
 LIBRARY = $(LIB_DIR)/libsignalgenerator.a
 
 INCLUDE_DIRS =  -Iinclude/
+INCLUDE_DIRS += -I../libutil/include
 
 # Source files
 SRC = $(SRC_DIR)/SignalGenerator.cc
@@ -35,5 +36,6 @@ $(OBJ_DIR):
 # Clean up
 clean:
 	rm -rf $(OBJ_DIR)
-	rm $(LIB)
-	
+	rm $(LIBRARY)
+
+-include $(OBJ:.o=.d)
